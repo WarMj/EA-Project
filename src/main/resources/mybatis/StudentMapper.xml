@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.warmj.ea.dao.StudentDao">
+
+    <select id="listStudentInformation" resultType="top.warmj.ea.domain.StudentDO">
+        SELECT *
+        FROM student_information
+    </select>
+
+    <select id="selectStudentBySid" resultType="top.warmj.ea.domain.StudentDO" parameterType="String">
+        SELECT *
+        FROM student_information
+        WHERE sid = #{sid};
+    </select>
+
+    <delete id="deleteStudentBySid" parameterType="String">
+        DELETE
+        FROM student_information
+        WHERE sid = #{sid};
+    </delete>
+
+    <update id="updateStudentBySid" parameterType="String">
+        UPDATE student_information
+        SET name = #{name},
+            sex = #{sex},
+            university = #{university},
+            college = #{college},
+            major = #{major},
+            s_class = #{sClass}
+        WHERE sid = #{sid}
+    </update>
+
+    <insert id="insertStudent" parameterType="String">
+        INSERT INTO student_information
+        (sid, name, sex, university, college, major, s_class)
+        VALUES
+        (#{sid}, #{name}, #{sex}, #{university}, #{college}, #{major}, #{sClass});
+    </insert>
+
+</mapper>
