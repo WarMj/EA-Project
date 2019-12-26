@@ -46,4 +46,14 @@ public class JumpController {
     public String Sub1_2(){
         return "/subs/sub1-2";
     }
+
+    @RequestMapping("login.html")
+    public String login(){
+        return "login";
+    }
+
+    @RequestMapping("/LoginPage/AdminLogin.html")
+    public String AdminLogin(){
+        return "/LoginPage/AdminLogin";
+    }
 }
