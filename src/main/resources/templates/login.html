@@ -20,6 +20,9 @@
 </div>
 
 <script type="text/javascript">
+
+    var login;
+
     function openlogin(){
         layui.use("layer",function() {
             var layer = layui.layer;
@@ -30,7 +33,12 @@
                 shadeClose:'true',
                 close:2,
                 type: 2,
-                content: 'LoginPage/AdminLogin.html'
+                content: 'LoginPage/AdminLogin.html',
+                end: function () {
+                    if (login === 'success') {
+                        window.location.href='http://localhost:8080/dashboard';
+                    }
+                }
             });
         });
 
