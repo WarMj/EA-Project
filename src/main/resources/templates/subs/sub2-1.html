@@ -1,0 +1,119 @@
+
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">首页</a></li>
+    <li class="breadcrumb-item"><a href="#">校园大数据</a></li>
+    <li class="breadcrumb-item active">校园基本数据</li>
+</ol>
+
+<body>
+    <div id="classSum" style="width: 600px;height:400px; float: left"></div>
+    <div id="chooseClassNum" style="width: 600px;height:400px; float:left;"></div>
+</body>
+
+
+<script type="text/javascript">
+
+    var myChart1 = echarts.init(document.getElementById('classSum'));
+    var option1 = {
+        // backgroundColor: 'rgba(00,130,00,0.3)',
+
+        title: {
+            text: '班级人数',
+            left: 'center',
+            top: 20,
+            textStyle: {
+                // color: '#64beca'
+            }
+        },
+
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+
+        visualMap: {
+            show: false,
+            min: 20,
+            max: 40,
+            inRange: {
+                colorLightness: [0, 1]
+            }
+        },
+        series : [
+            {
+                name:'学生人数',
+                type:'pie',
+                radius : '55%',
+                center: ['50%', '50%'],
+                data:[
+                    {value:31, name:'计科1921'},
+                    {value:30, name:'计科1922'},
+                    {value:28, name:'计科1923'},
+                    {value:37, name:'计科1701'},
+                    {value:29, name:'计科1702'}
+                ].sort(function (a, b) { return a.value - b.value; }),
+                roseType: 'radius',
+                // label: {
+                //     normal: {
+                //         textStyle: {
+                //             color: 'rgba(255, 255, 255, 0.3)'
+                //         }
+                //     }
+                // },
+                // labelLine: {
+                //     normal: {
+                //         lineStyle: {
+                //             color: 'rgba(255, 255, 255, 0.3)'
+                //         },
+                //         smooth: 0.2,
+                //         length: 10,
+                //         length2: 20
+                //     }
+                // },
+                itemStyle: {
+                    normal: {
+                        color: '#c23531',
+                        // shadowBlur: 200,
+                        // shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                },
+
+                animationType: 'scale',
+                animationEasing: 'elasticOut',
+                animationDelay: function (idx) {
+                    return Math.random() * 200;
+                }
+            }
+        ]
+    };
+    myChart1.setOption(option1);
+
+
+    var myChart2 = echarts.init(document.getElementById('chooseClassNum'));
+    var option2 = {
+        title: {
+            text: '毕业人数',
+            left: 'center',
+            top: 20,
+            textStyle: {
+                // color: '#64beca'
+            }
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: ['2012', '2013', '2014', '2015', '2016', '2017', '2018']
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [{
+            data: [5057, 5745, 5890, 5678, 5898, 5876, 6098],
+            type: 'line',
+            areaStyle: {}
+        }]
+    };
+
+    myChart2.setOption(option2);
+</script>
