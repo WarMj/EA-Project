@@ -12,6 +12,11 @@ public class JumpController {
         return "login";
     }
 
+    @RequestMapping("/")
+    public String index1(){
+        return "login";
+    }
+
     @RequestMapping("dashboard")
     public String dashboard(){
         return "dashboard";
